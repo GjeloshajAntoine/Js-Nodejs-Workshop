@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <form class="" action="/add" method="post">
+      <input type="text" name="taskName" value="">
+      <input type="submit" name="" value="Envoyer">
+    </form>
+
+  <ul>
+      <%  tasks.forEach((task)=>{ %>
+          <li> <%= task.name %> </li>
+      <% }); %>
+  </ul>
+
+  </body>
+</html>
