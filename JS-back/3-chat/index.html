@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Chat en websocket</h1>
+    <div id="chatBox">
+
+    </div>
+    <form id="formMessage" class="" action="" method="">
+      <input id="message" type="text" name="message" value="" placeholder="message">
+    </form>
+
+    <script type="text/javascript">
+      var formMessage=document.getElementById('formMessage');
+      var socket = io('http://localhost:8080');
+
+      formMessage.addEventListener('submit',function (e) {
+        e.preventDefault();
+        var message=document.getElementById('message').value
+        //console.log(message);
+        socket.emit('messageChat',message)
+      })
+
+      socket.on("sendMessage",function (data) {
+        console.log(data);
+        var domMessage=`<span>${data}</span>
+                          <br/>
+                        `
+        document.getElementById('chatBox').innerHTML+=domMessage;
+      })
+    </script>
+  </body>
+
+</html>
